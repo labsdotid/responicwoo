@@ -95,6 +95,9 @@ class Setting
             $tabs .= '<a href="' . $url . '" class="nav-tab' . $is_active . '">' . $name . '</a>';
         endforeach;
 
+        $customer = new woo_Customer();
+        $order = new woo_Order();
+
         echo '<div class="wrap">';
         echo '<h2>' . __('Responic Settings', 'salesloo') . '</h2>';
         echo '<h2 class="nav-tab-wrapper wp-clearfix">' . $tabs . '</h2>';
@@ -168,7 +171,23 @@ class Setting
                     </div>
                     <div class="responicwoo-flex responicwoo-justify-center responicwoo-items-start responicwoo-space-x-5">
                         <div class="responicwoo-flex-none responicwoo-w-48">
-                            <label><?php echo $this->column; ?> Message</label>
+                            <h3 class="responicwoo-font-bold">Dynamic Variable</h3>
+                            <div class="responicwoo-relative">
+                                <div class="responicwoo-font-semibold">Customer Data</div>
+                                <ul class="responicwoo-pl-5">
+                                    <?php foreach ($customer->toArray() as $key => $val) : ?>
+                                        <li>[<?php echo $key; ?>]</li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <div class="responicwoo-relative responicwoo-mt-5">
+                                <div class="responicwoo-font-semibold">Order Data</div>
+                                <ul class="responicwoo-pl-5">
+                                    <?php foreach ($order->toArray() as $key => $val) : ?>
+                                        <li>[<?php echo $key; ?>]</li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
                         </div>
                         <div class="responicwoo-flex-grow">
                             <div class="responicwoo-flex responicwoo-flex-col responicwoo-space-y-5">

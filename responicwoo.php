@@ -25,6 +25,8 @@
  * Domain Path:       /languages
  */
 
+use Salesloo\Response;
+
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
@@ -72,6 +74,8 @@ class Responicwoo
     public $setting;
 
     public $admin;
+
+    public $notification;
 
     /**
      * run
@@ -136,12 +140,17 @@ class Responicwoo
     {
         require_once RESPONICWOO_PATH . '/inc/setting.php';
         require_once RESPONICWOO_PATH . '/inc/admin.php';
+        require_once RESPONICWOO_PATH . '/inc/woo-customer.php';
+        require_once RESPONICWOO_PATH . '/inc/woo-order.php';
+        require_once RESPONICWOO_PATH . '/inc/whatsapp.php';
+        require_once RESPONICWOO_PATH . '/inc/notification.php';
     }
 
     public function init()
     {
-        $this->setting = new Responicwoo\Setting();
-        $this->admin = new Responicwoo\Admin();
+        $this->setting      = new Responicwoo\Setting();
+        $this->admin        = new Responicwoo\Admin();
+        $this->notification = new Responicwoo\Notification();
     }
 
     public function install_hooks()
@@ -151,6 +160,8 @@ class Responicwoo
 
         add_action('admin_menu', [$this->setting, 'add_menu_page']);
         add_action('admin_init', [$this->setting, 'on_save']);
+
+        add_action('woocommerce_order_status_changed', [$this->notification, 'order_status_changed'], 10, 4);
     }
 
     /**
