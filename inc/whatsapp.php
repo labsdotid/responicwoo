@@ -88,7 +88,7 @@ class Whatsapp
 
         $response = curl_exec($curl);
         curl_close($curl);
-        error_log('responic_send_status : ' . print_r($response));
+        error_log('responic_send_status : ' . wp_json_encode($response));
         return $response;
     }
 }

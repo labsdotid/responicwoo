@@ -60,8 +60,8 @@ function deactivate_salesloo_starsender()
     // Salesloo_Starsender_Deactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_salesloo_starsender');
-register_deactivation_hook(__FILE__, 'deactivate_salesloo_starsender');
+register_activation_hook(__FILE__, 'activate_responic');
+register_deactivation_hook(__FILE__, 'deactivate_responic');
 
 
 class Responicwoo
