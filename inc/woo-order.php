@@ -30,7 +30,7 @@ class woo_Order
             $this->sub_total       = str_replace('&nbsp;', '', strip_tags($order->get_subtotal_to_display()));
             $this->discount        = str_replace('&nbsp;', '', strip_tags($order->get_discount_to_display()));
             $this->total           = str_replace('&nbsp;', '', strip_tags($order->get_formatted_order_total()));
-            $this->total_item      = $order->get_item_count();
+            $this->total_items      = $order->get_item_count();
             $this->note            = $order->get_customer_note();
             $this->status          = $order->get_status();
             $this->items           = $this->items($order);
