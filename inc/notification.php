@@ -62,19 +62,23 @@ class Notification
 
     public function for_admin($data, $status)
     {
+        error_log('responic_notif : ready send for admin with order status ' . $status);
         $is_enable = get_option('responicwoo_admin_wc-' . $status . '_enable');
         if (!$is_enable) return;
+        error_log('responic_notif : message for customer enable');
 
         $message_template = get_option('responicwoo_admin_wc-' . $status . '_message');
 
         if (empty($message_template)) return;
 
+        error_log('responic_notif : message for customer available');
+
         $wa = new Whatsapp();
         $admin_phones = get_option('responicwoo_admin_phones');
-        $recipients = explode($admin_phones, ',');
+        $recipients = explode(',', $admin_phones);
 
         foreach ($recipients as $recipient) {
-            error_log('responic_send_to' . $recipient);
+            error_log('responic_send_to admin ' . $recipient);
             $wa->to($recipient)
                 ->message($message_template, $data)
                 ->send();
