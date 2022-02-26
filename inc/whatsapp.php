@@ -66,29 +66,25 @@ class Whatsapp
         error_log('responic_notif : token ready ' . $this->token);
         error_log('responic_notif : message ' . $this->_message);
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->base . '/message/text',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => '{
-    "recipient": "' . $this->_recipient . '",
-    "message": "' . rawurldecode($this->_message) . '"
-}',
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer ' . $this->token,
-                'Content-Type: application/json'
-            ),
-        ));
+        $response = wp_remote_post(
+            $this->base . '/message/text',
+            [
+                'body' => wp_json_encode([
+                    'recipient' => $this->_recipient,
+                    'message' => rawurldecode($this->_message),
+                ]),
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $this->token
+                ]
+            ]
+        );
 
-        $response = curl_exec($curl);
-        curl_close($curl);
-        error_log('responic_send_status : ' . wp_json_encode($response));
+        $body = json_decode(wp_remote_retrieve_body($response), true);
+        $code = intval(wp_remote_retrieve_response_code($response));
+
+        error_log('responic_send_status : ' . wp_json_encode($body));
+        error_log('responic_send_status_code : ' . $code);
         return $response;
     }
 }
