@@ -42,27 +42,6 @@ define('RESPONICWOO_URL', plugin_dir_url(__FILE__));
 define('RESPONICWOO_PATH', plugin_dir_path(__FILE__));
 define('RESPONICWOO_ROOT', __FILE__);
 
-/**
- * The code that runs during plugin activation.
- */
-function activate_responic()
-{
-    // require_once plugin_dir_path(__FILE__) . 'includes/class-salesloo-starsender-activator.php';
-    // Salesloo_Starsender_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- */
-function deactivate_salesloo_starsender()
-{
-    // require_once SALESLOO_RESPONIC_PATH . 'includes/class-salesloo-starsender-deactivator.php';
-    // Salesloo_Starsender_Deactivator::deactivate();
-}
-
-register_activation_hook(__FILE__, 'activate_responic');
-register_deactivation_hook(__FILE__, 'deactivate_responic');
-
 
 class Responicwoo
 {
