@@ -5,7 +5,7 @@ namespace Responicwoo;
 
 class Whatsapp
 {
-    private $base = 'https://api.responic.com';
+    private $base = 'https://panel.responic.com/api/message';
 
     private $token;
 
@@ -67,10 +67,10 @@ class Whatsapp
         error_log('responic_notif : message ' . $this->_message);
 
         $response = wp_remote_post(
-            $this->base . '/message/text',
+            $this->base,
             [
                 'body' => wp_json_encode([
-                    'recipient' => $this->_recipient,
+                    'receiver' => $this->_recipient,
                     'message' => rawurldecode($this->_message),
                 ]),
                 'headers' => [
