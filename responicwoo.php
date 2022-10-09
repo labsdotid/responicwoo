@@ -16,7 +16,7 @@
  * Plugin Name:       Responicwoo
  * Plugin URI:        https://labs.id
  * Description:       Responic Whatsapp Notification for WooCommerce
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Responic Teams
  * Author URI:        https://www.salesloo.id
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('RESPONICWOO_VERSION', '1.2.0');
+define('RESPONICWOO_VERSION', '1.2.1');
 define('RESPONICWOO_URL', plugin_dir_url(__FILE__));
 define('RESPONICWOO_PATH', plugin_dir_path(__FILE__));
 define('RESPONICWOO_ROOT', __FILE__);
