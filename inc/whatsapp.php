@@ -72,7 +72,7 @@ class Whatsapp
                 'body' => wp_json_encode([
                     'receiver' => $this->_recipient,
                     'message' => [
-                        'text' => rawurldecode($this->_message)
+                        'text' => $this->_message
                     ],
                 ]),
                 'headers' => [
