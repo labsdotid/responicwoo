@@ -140,7 +140,7 @@ class Setting
                     responicwoo-border-gray-300
                     focus:responicwoo-border-indigo-300 focus:responicwoo-ring focus:responicwoo-ring-indigo-200 focus:responicwoo-ring-opacity-50
                   " placeholder="" value="<?php echo get_option('responicwoo_api_token'); ?>">
-                                <p class="description responicwoo-italic">Responic api key <a target="blank" class="responicwoo-text-blue-400" href=" https://app.responic.com/device">Click here to get responic api token</a></p>
+                                <p class="description responicwoo-italic">Responic api key <a target="blank" class="responicwoo-text-blue-400" href=" https://panel.responic.com/account">Click here to get responic api token</a></p>
                             </div>
                         </div>
                     </div>
