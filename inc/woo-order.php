@@ -27,6 +27,7 @@ class woo_Order
     public function __construct($order = false)
     {
         if (is_a($order, 'Automattic\WooCommerce\Admin\Overrides\Order')) {
+            $this->order_number    = $order->get_order_number();
             $this->sub_total       = str_replace('&nbsp;', '', strip_tags($order->get_subtotal_to_display()));
             $this->discount        = str_replace('&nbsp;', '', strip_tags($order->get_discount_to_display()));
             $this->total           = str_replace('&nbsp;', '', strip_tags($order->get_formatted_order_total()));
