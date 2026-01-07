@@ -5,7 +5,7 @@ namespace Responicwoo;
 
 class woo_Order
 {
-    public order_number;
+    public $order_number;
     public $sub_total;
     public $shipping_cost;
     public $shipping_method;
