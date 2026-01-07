@@ -5,6 +5,7 @@ namespace Responicwoo;
 
 class woo_Order
 {
+    public order_number;
     public $sub_total;
     public $shipping_cost;
     public $shipping_method;
@@ -16,6 +17,7 @@ class woo_Order
     public $status;
     public $date;
     public $payment_method;
+    public $payment_url;
 
 
     /**
@@ -39,6 +41,7 @@ class woo_Order
             $this->shipping_cost   = str_replace('&nbsp;', '', strip_tags(wc_price($order->get_shipping_total())));
             $this->shipping_method = $order->get_shipping_method();
             $this->payment_method  = $order->get_payment_method_title();
+            $this->payment_url     = $order->get_checkout_payment_url();
         }
     }
 
